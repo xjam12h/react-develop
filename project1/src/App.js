@@ -48,6 +48,7 @@ class App extends React.Component {
 
   }
   getTextFile = (e) => {
+    var i, j;
     console.log(e);
     var file = e.target.files[0]; //ファイル内容を読み出し
     console.log(file);
@@ -55,10 +56,25 @@ class App extends React.Component {
     reader.readAsText(file);
     reader.onload = function (e) {
       console.log(reader.result);
+      var tmp = reader.result.split(/\r\n|\n|\r/);
+      console.log(tmp);
+      var csvarray = new Array();
+      for (i = 0; i < tmp.length; i++) {
+        csvarray[i] = tmp[i].split(',');
+      }
+      console.log(csvarray);
+      console.log(Encode.detect(csvarray[1][0]));
+      var data = [];
+
+      // for (i = 0; i < csvarray.length; i++) {
+      //   for (j = 0; j < csvarray[i].length; j++) {
+      //     data[i][j] = Encode.convert(csvarray[i][j], 'UNICODE');
+      //   }
+      // }
+      // console.log(csvarray[1][0]);
+
+
     }
-
-    //var bb = a.split(',');
-
   }
   render() {
     let a = 'VÑ';
