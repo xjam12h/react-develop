@@ -9,8 +9,13 @@ import { string } from 'postcss-selector-parser';
 import Iconv from 'iconv-lite';
 import csv from 'csv';
 
+const Wrapper = styled.div`
+  display: flex;
+  position: relative;
+`;
 
-/* const Box = styled.input`
+
+const Box = styled.input`
   width: 320px;
   height: 40px;
   border: 1px solid #4c9aff;
@@ -32,7 +37,6 @@ const Btn = styled(Button)`
   margin-right: 15px;
   cursor: pointer;
 `
- */
 
 class App extends React.Component {
   constructor(props) {
@@ -155,6 +159,10 @@ class App extends React.Component {
         </form>
         <hr></hr>
         <input type="file" onChange={(e) => { this.handleChange(e) }} />
+        <Wrapper>
+          <Box type="file" onChange={(e) => { this.handleChange(e) }} readOnly></Box>
+          <Btn></Btn>
+        </Wrapper>
       </div>
     );
   }
